@@ -1,7 +1,9 @@
+
+
 module "vpc" {
   source = "terraform-aws-modules/vpc/aws"
 
-  name = "argo-poc"
+  name = "argo-${var.environment}"
   cidr = "10.0.0.0/16"
 
   azs             = ["us-west-2a", "us-west-2b", "us-west-2c"]
@@ -11,13 +13,5 @@ module "vpc" {
   enable_nat_gateway = true
   enable_vpn_gateway = false
 
-  private_subnet_tags = {
-    "kubernetes.io/cluster/argocd-poc-cluster" = "shared"
-    "kubernetes.io/cluster/argocd-app-cluster" = "shared"
-  }
-
-  tags = {
-    Terraform   = "true"
-    Environment = "poc"
-  }
+  tags = var.tags
 }
