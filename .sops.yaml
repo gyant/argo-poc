@@ -1,0 +1,4 @@
+# creation rules are evaluated sequentially, the first match wins
+creation_rules:
+  - path_regex: \.poc\.yaml$
+    kms: 'arn:aws:kms:us-west-2:137668938909:key/ec0c461d-9ecb-4016-b468-dd8a31aae6c7'
