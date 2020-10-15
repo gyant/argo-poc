@@ -1,0 +1,26 @@
+# This is where the default configuration for argo can be overwritten
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-cm
+  labels:
+    app.kubernetes.io/name: argocd-cm
+    app.kubernetes.io/part-of: argocd
+data:
+  # Each repository we want argocd to work with goes in this list.
+  repositories: |
+    - url: https://github.com/gyant/argo-poc.git
+
+
+  # repository.credentials is where the various credentials / ssh keys are split up
+  # so we are not bound to a a single set of global credentials. We can also target entire
+  # github org / user directories as the below example indicates. Credentials can also be
+  # attached to individual repositories in the repositories field above.
+  repository.credentials: |
+    - url: https://github.com/gyant
+      passwordSecret:
+        name: argocd-repo-secrets
+        key: gyant-github-password
+      usernameSecret:
+        name: argocd-repo-secrets
+        key: gyant-github-username

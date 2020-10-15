@@ -1,0 +1,30 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: argocd-poc
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/gyant/argo-poc.git
+    targetRevision: main
+    path: k8s/argocd/overlays/poc
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argocd
+---
+
+
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: test
+spec:
+  project: test
+  source:
+    repoURL: https://github.com/gyant/argo-poc.git
+    targetRevision: main
+    path: k8s/test
+  destination:
+    server: https://0C707EC6816159208E6E88FBE033505F.gr7.us-west-2.eks.amazonaws.com
+    namespace: default
+---
