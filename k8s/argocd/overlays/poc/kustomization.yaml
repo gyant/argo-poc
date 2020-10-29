@@ -10,5 +10,7 @@ resources:
   - secrets.poc.yaml
   - applications.yaml
   - clusters.poc.yaml
-  - argocd-cm.yaml
   - projects.yaml
+
+patchesStrategicMerge:
+  - argocd-cm.yaml
