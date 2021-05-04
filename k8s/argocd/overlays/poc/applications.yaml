@@ -25,6 +25,6 @@ spec:
     targetRevision: main
     path: k8s/test
   destination:
-    server: https://0C707EC6816159208E6E88FBE033505F.gr7.us-west-2.eks.amazonaws.com
+    server: https://C5DF5FD3176243876BFC79E7C3BCDFDF.gr7.us-west-2.eks.amazonaws.com
     namespace: default
 ---
